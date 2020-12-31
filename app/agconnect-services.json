@@ -1,0 +1,12 @@
+{
+	"client":{
+		"cp_id":"890090000023106259",
+		"product_id":"736430079244655035",
+		"client_id":"463043587609723968",
+		"client_secret":"A7C0AE758FF8ED9977A5F99EA1BB06AD7AE99FAF1AB7FA298185DEA02F3A264B",
+		"app_id":"102997599",
+		"package_name":"com.example.videokitdemojava",
+		"api_key":"CgB6e3x9MSs1UYief5bVrlqwCTI4k8nmaeUIrXMWBNdDifJErO7ubLujo8oLHgClwZ4/+uwxAnjlMoOx5qA1m74s"
+	},
+	"configuration_version":"1.0"
+}

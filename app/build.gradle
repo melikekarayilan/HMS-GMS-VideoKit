@@ -1,0 +1,77 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.huawei.agconnect'
+
+
+if (getGradle().getStartParameter().getTaskRequests().toString().toLowerCase().contains("gms")) {
+    apply plugin: 'com.google.gms.google-services'
+} else {
+    apply plugin: 'com.huawei.agconnect'
+}
+
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.1"
+
+    defaultConfig {
+        applicationId "com.example.videokitdemojava"
+        minSdkVersion 28
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a"
+        }
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    signingConfigs {
+        release {
+            storeFile file('D:/VideoKitDemoJava/app/test.jks')
+            keyAlias 'key0'
+            keyPassword '123456'
+            storePassword '123456'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+
+        flavorDimensions "version"
+        productFlavors {
+            hms {
+                dimension "version"
+            }
+
+            gms {
+                dimension "version"
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.release
+
+            debuggable true
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+//noinspection GradleCompatible
+    implementation 'com.android.support:design:27.1.1'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:cardview-v7:27.1.1'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.huawei.hms:videokit-player:1.0.1.300'
+}
